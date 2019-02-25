@@ -4,7 +4,7 @@
 *Choose to be a Worker or a God 
 *https://www.avalon-rpg.com/
 *-------------------------------------------------------
-
+*james
 *-------------------------------------------------------
 *Validation values to be used, modify as needed
 *Add additional validation values as required
@@ -284,6 +284,7 @@ health:     ds.w    1
 score:      ds.w    1 reserve space for score
 
     end start
+
 *~Font name~Courier New~
 *~Font size~10~
 *~Tab type~1~
