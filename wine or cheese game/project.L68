@@ -1,0 +1,342 @@
+00001000 Starting Address
+Assembler used: EASy68K Editor/Assembler v5.16.01
+Created On: 25/03/2019 14:54:16
+
+00000000                             1  *-----------------------------------------------------------
+00000000                             2  * Title      :Wine or Cheese
+00000000                             3  * Written by :James O Hara
+00000000                             4  * Date       :25/03/2019
+00000000                             5  * Description: 
+00000000                             6  *-----------------------------------------------------------
+00001000                             7      ORG    $1000
+00001000                             8  START:     
+00001000                             9      
+00001000                            10      
+00001000  6100 0002                 11      BSR WINE_OR_CHEESE
+00001004                            12  
+00001004                            13  WINE_OR_CHEESE:
+00001004                            14  
+00001004  43F9 00001170             15         LEA introduction,A1
+0000100A  103C 000E                 16         MOVE.B #14,D0
+0000100E  4E4F                      17         TRAP #15
+00001010                            18          
+00001010  103C 0004                 19         MOVE.B #4, D0
+00001014  4E4F                      20         TRAP #15
+00001016  103C 0001                 21         MOVE.B #1, D0
+0000101A                            22         
+0000101A  B041                      23         CMP D1,D0
+0000101C  6700 0006                 24         BEQ WINE_CHOOSEN
+00001020  6600 013E                 25         BNE CHEESE_CHOOSEN
+00001024                            26  
+00001024                            27          
+00001024                            28  WINE_CHOOSEN:
+00001024                            29  
+00001024  43F9 0000125E             30       LEA WineChoosen,A1
+0000102A  103C 000E                 31       MOVE.B #14,D0
+0000102E  4E4F                      32       TRAP #15
+00001030                            33         
+00001030  103C 0004                 34       MOVE.B #4, D0
+00001034  4E4F                      35       TRAP #15
+00001036  103C 0001                 36       Move.b #1, D0
+0000103A                            37         
+0000103A  B041                      38       CMP D1,D0
+0000103C  6700 0026                 39       BEQ DRINK_WINE
+00001040  6600 0002                 40       BNE NO_WINE
+00001044                            41  
+00001044                            42  NO_WINE:       
+00001044                            43     
+00001044  43F9 000013FA             44     LEA WineNotDrank,A1
+0000104A  103C 000E                 45     MOVE.B #14,D0
+0000104E  4E4F                      46     TRAP #15
+00001050                            47     
+00001050  103C 0004                 48      MOVE.B #4, D0
+00001054  4E4F                      49      TRAP #15
+00001056  103C 0001                 50      Move.b #1, D0
+0000105A                            51         
+0000105A  B041                      52      CMP D1,D0
+0000105C  6700 0006                 53      BEQ DRINK_WINE
+00001060  6600 00FE                 54      BNE END_GAME    
+00001064                            55      
+00001064                            56  DRINK_WINE:
+00001064                            57  
+00001064  43F9 0000132C             58      LEA DrinkWine,A1
+0000106A  103C 000E                 59      MOVE.B #14,D0
+0000106E  4E4F                      60      TRAP #15
+00001070                            61         
+00001070  103C 0004                 62      MOVE.B #4, D0
+00001074  4E4F                      63      TRAP #15
+00001076  103C 0001                 64      Move.b #1, D0
+0000107A                            65         
+0000107A  B041                      66      CMP D1,D0
+0000107C  6700 0026                 67      BEQ LEAVE_TAVERN
+00001080  6600 0002                 68      BNE STAY_IN_TAVERN
+00001084                            69      
+00001084                            70  STAY_IN_TAVERN:
+00001084                            71  
+00001084  43F9 0000160E             72      LEA StayTavern,A1
+0000108A  103C 000E                 73      MOVE.B #14,D0
+0000108E  4E4F                      74      TRAP #15
+00001090                            75         
+00001090  103C 0004                 76      MOVE.B #4, D0
+00001094  4E4F                      77      TRAP #15
+00001096  103C 0001                 78      Move.b #1, D0
+0000109A                            79         
+0000109A  B041                      80      CMP D1,D0
+0000109C  6700 0006                 81      BEQ LEAVE_TAVERN
+000010A0  6600 00BE                 82      BNE END_GAME
+000010A4                            83      
+000010A4                            84  LEAVE_TAVERN:
+000010A4                            85  
+000010A4  43F9 00001500             86      LEA LeaveTavern,A1
+000010AA  103C 000E                 87      MOVE.B #14,D0
+000010AE  4E4F                      88      TRAP #15
+000010B0                            89         
+000010B0  103C 0004                 90      MOVE.B #4, D0
+000010B4  4E4F                      91      TRAP #15
+000010B6  103C 0001                 92      Move.b #1, D0
+000010BA                            93         
+000010BA  B041                      94      CMP D1,D0
+000010BC  6700 0026                 95      BEQ GO_PHARMACY
+000010C0  6600 0002                 96      BNE HEAD_AWAY
+000010C4                            97  
+000010C4                            98  HEAD_AWAY:
+000010C4                            99  
+000010C4  43F9 0000173A            100      LEA HeadAway,A1
+000010CA  103C 000E                101      MOVE.B #14,D0
+000010CE  4E4F                     102      TRAP #15
+000010D0                           103         
+000010D0  103C 0004                104      MOVE.B #4, D0
+000010D4  4E4F                     105      TRAP #15
+000010D6  103C 0001                106      Move.b #1, D0
+000010DA                           107         
+000010DA  B041                     108      CMP D1,D0
+000010DC  6700 0006                109      BEQ GO_PHARMACY
+000010E0  6600 007E                110      BNE END_GAME
+000010E4                           111  
+000010E4                           112  GO_PHARMACY:
+000010E4                           113      
+000010E4  43F9 000018C4            114      LEA GoPharmacy ,A1
+000010EA  103C 000E                115      MOVE.B #14,D0
+000010EE  4E4F                     116      TRAP #15
+000010F0                           117         
+000010F0  103C 0004                118      MOVE.B #4, D0
+000010F4  4E4F                     119      TRAP #15
+000010F6  103C 0001                120      Move.b #1, D0
+000010FA                           121         
+000010FA  B041                     122      CMP D1,D0
+000010FC  6700 0026                123      BEQ TALK_TO_CHEMIST
+00001100  6600 0002                124      BNE LEAVE_PHARMACY
+00001104                           125      
+00001104                           126  LEAVE_PHARMACY:
+00001104                           127  
+00001104  43F9 00001950            128      LEA LeavePharmacy ,A1
+0000110A  103C 000E                129      MOVE.B #14,D0
+0000110E  4E4F                     130      TRAP #15
+00001110                           131         
+00001110  103C 0004                132      MOVE.B #4, D0
+00001114  4E4F                     133      TRAP #15
+00001116  103C 0001                134      Move.b #1, D0
+0000111A                           135         
+0000111A  B041                     136      CMP D1,D0
+0000111C  6700 0006                137      BEQ TALK_TO_CHEMIST
+00001120  6600 003E                138      BNE END_GAME
+00001124                           139      
+00001124                           140  TALK_TO_CHEMIST:
+00001124                           141  
+00001124  43F9 00001A4D            142      LEA ApproachCounter ,A1
+0000112A  103C 000E                143      MOVE.B #14,D0
+0000112E  4E4F                     144      TRAP #15
+00001130                           145         
+00001130  103C 0004                146      MOVE.B #4, D0
+00001134  4E4F                     147      TRAP #15
+00001136  103C 0001                148      Move.b #1, D0
+0000113A                           149         
+0000113A  B041                     150      CMP D1,D0
+0000113C  6700 0006                151      BEQ HOP_COUNTER
+00001140  6600 0002                152      BNE ATTACK_BEARS
+00001144                           153  ATTACK_BEARS:
+00001144                           154      
+00001144                           155  HOP_COUNTER:
+00001144                           156   
+00001144  43F9 00001A4D            157    LEA ApproachCounter ,A1
+0000114A  103C 000E                158      MOVE.B #14,D0
+0000114E  4E4F                     159      TRAP #15
+00001150                           160         
+00001150  103C 0004                161      MOVE.B #4, D0
+00001154  4E4F                     162      TRAP #15
+00001156  103C 0001                163      Move.b #1, D0
+0000115A                           164         
+0000115A  B041                     165      CMP D1,D0
+0000115C  67E6                     166      BEQ HOP_COUNTER
+0000115E  66E4                     167      BNE ATTACK_BEARS
+00001160                           168  
+00001160                           169  
+00001160                           170  CHEESE_CHOOSEN:
+00001160                           171      
+00001160                           172  END_GAME:
+00001160                           173  
+00001160  43F9 00001B9E            174      LEA YouDied ,A1
+00001166  103C 000E                175      MOVE.B #14,D0
+0000116A  4E4F                     176      TRAP #15
+0000116C                           177         
+0000116C                           178     
+0000116C                           179  
+0000116C                           180  
+0000116C                           181  
+0000116C  FFFF FFFF                182      SIMHALT             ; halt simulator
+00001170                           183  
+00001170= 77 65 6C 63 6F 6D ...    184  Introduction: dc.b 'welcome to wine or cheese a text based game where you are given'
+000011AF= 0D 0A                    185                dc.b $0D,$0A
+000011B1= 74 77 6F 20 63 68 ...    186                dc.b 'two choices you choose wrong you lose 25 health you choose right'
+000011F1= 0D 0A                    187                dc.b $0D,$0A
+000011F3= 79 6F 75 20 63 6F ...    188                dc.b 'you continue on to your next challenge'
+00001219= 0D 0A                    189                dc.b $0D,$0A
+0000121B= 65 6E 74 65 72 20 ...    190                dc.b 'enter 1 if you love your wines'
+00001239= 0D 0A                    191                dc.b $0D,$0A
+0000123B= 65 6E 74 65 72 20 ...    192                dc.b 'enter 2 if you love your cheeses'
+0000125B= 0D 0A 00                 193                dc.b $0D,$0A,0
+0000125E                           194                
+0000125E= 79 6F 75 20 66 69 ...    195  WineChoosen: dc.b 'you find your self sitting in a tavern with a fresh cup of wine in'
+000012A0= 0D 0A                    196                dc.b  $0D,$0A
+000012A2= 66 72 6F 6E 74 20 ...    197                dc.b 'front of you now you must decide whether or not you are going to drink it'
+000012EB= 0D 0A                    198                dc.b  $0D,$0A
+000012ED= 70 72 65 73 73 20 ...    199                dc.b 'press one to drink the wine'
+00001308= 0D 0A                    200                dc.b  $0D,$0A
+0000130A= 70 72 65 73 73 20 ...    201                dc.b 'press two to not drink the wine'
+00001329= 0D 0A 00                 202                dc.b  $0D,$0A,0
+0000132C                           203                
+0000132C= 79 6F 75 20 67 72 ...    204  DrinkWine: dc.b 'you grap the cup firmly and drink heavily from it only to realize what you'
+00001376= 0D 0A                    205              dc.b  $0D,$0A   
+00001378= 61 72 65 20 69 6E ...    206              dc.b 'are in fact drinking is fox piss'
+00001398= 0D 0A                    207              dc.b  $0D,$0A
+0000139A= 70 72 65 73 73 20 ...    208              dc.b 'press one to leave the tavern as you feel sickly'
+000013CA= 0D 0A                    209              dc.b  $0D,$0A
+000013CC= 70 72 65 73 73 20 ...    210              dc.b 'press two to continue drinking the fox piss'
+000013F7= 0D 0A 00                 211              dc.b  $0D,$0A,0   
+000013FA                           212                
+000013FA                           213                
+000013FA= 79 6F 75 20 63 6F ...    214  WineNotDrank: dc.b 'you come to the traven and order a class of wine yet you will not'
+0000143B= 0D 0A                    215                  dc.b  $0D,$0A 
+0000143D= 64 72 69 6E 6B 20 ...    216                  dc.b 'drink it you are a fool and im taking away 25 health from you'
+0000147A= 0D 0A                    217                  dc.b $0D,$0A
+0000147C= 6E 6F 77 20 79 6F ...    218                  dc.b 'now you shall continue on and drink the wine'
+000014A8= 0D 0A                    219                  dc.b  $0D,$0A
+000014AA= 70 72 65 73 73 20 ...    220                  dc.b 'press one to continue and drink the wine'
+000014D2= 0D 0A                    221                  dc.b  $0D,$0A
+000014D4= 70 72 65 73 73 20 ...    222                  dc.b 'press two to end the game if you are weak'
+000014FD= 0D 0A 00                 223                  dc.b  $0D,$0A,0
+00001500                           224             
+00001500= 79 6F 75 20 6C 65 ...    225  LeaveTavern: dc.b 'you leave the tavern and find yorself in a courtyard a women comes up to'
+00001548= 0D 0A                    226               dc.b  $0D,$0A
+0000154A= 61 6E 64 20 73 61 ...    227               dc.b 'and says "you sir look rahter sickly you should head to the local pharmacy"'
+00001595= 0D 0A                    228               dc.b  $0D,$0A
+00001597= 74 68 65 20 77 6F ...    229               dc.b 'the women points up the street'
+000015B5= 0D 0A                    230               dc.b  $0D,$0A
+000015B7= 70 72 65 73 73 20 ...    231               dc.b 'press one to head up to the local pharmacy'
+000015E1= 0D 0A                    232               dc.b $0D,$0A
+000015E3= 70 72 65 73 73 20 ...    233               dc.b 'press two to head away from the pharmacy'
+0000160B= 0D 0A 00                 234               dc.b  $0D,$0A,0
+0000160E                           235               
+0000160E= 79 6F 75 20 64 65 ...    236  StayTavern: dc.b 'you decide to stay and drink the fox piss as you consume more fox piss you'
+00001658= 0D 0A                    237              dc.b $0D,$0A
+0000165A= 72 61 70 69 64 6C ...    238              dc.b 'rapidly begin to feel sick and you throw up all over the family next to you'
+000016A5= 0D 0A                    239              dc.b $0D,$0A
+000016A7= 74 68 69 73 20 6C ...    240              dc.b 'this leads to you begin kicked out onto the street costing you 25 health'
+000016EF= 0D 0A                    241              dc.b $0D,$0A
+000016F1= 70 72 65 73 73 20 ...    242              dc.b 'press one to talk to the lady on the street'
+0000171C= 0D 0A                    243              dc.b $0D,$0A
+0000171E= 70 72 65 73 73 20 ...    244              dc.b 'press two to end the game'
+00001737= 0D 0A 00                 245              dc.b $0D,$0A,0
+0000173A                           246           
+0000173A= 79 6F 75 20 68 65 ...    247  HeadAway: dc.b 'you head away from the pharmacy stupidly ignoring the womens advice only'
+00001782= 0D 0A                    248            dc.b $0D,$0A
+00001784= 74 6F 20 77 61 6C ...    249            dc.b 'to walk for about ten mintues feeling worse and worse until you pass out and wake'
+000017D5= 0D 0A                    250            dc.b $0D,$0A 
+000017D7= 75 70 20 6F 75 74 ...    251            dc.b 'up outside the tavern with the lady from earlier in front off of you shes tell you'
+00001829= 0D 0A                    252            dc.b $0D,$0A
+0000182B= 74 6F 20 73 74 6F ...    253            dc.b 'to stop being stupid and ti head to the tavern she heads off and you lose 25 health'
+0000187E= 0D 0A                    254            dc.b $0D,$0A
+00001880= 70 72 65 73 73 20 ...    255            dc.b 'press one to continue to the pharmacy'
+000018A5= 0D 0A                    256            dc.b $0D,$0A
+000018A7= 70 72 65 73 73 20 ...    257            dc.b 'press two two end the game'
+000018C1= 0D 0A 00                 258            dc.b $0D,$0A,0
+000018C4                           259  
+000018C4= 79 6F 75 20 73 74 ...    260  GoPharmacy: dc.b 'you stroll up the street to the pharmacy and walk through the front door'
+0000190C= 0D 0A                    261              dc.b $0D,$0A
+0000190E= 70 72 65 73 73 20 ...    262              dc.b 'press one to go to the counter'
+0000192C= 0D 0A                    263              dc.b $0D,$0A
+0000192E= 70 72 65 73 73 20 ...    264              dc.b 'press two to leave the pharamcy'
+0000194D= 0D 0A 00                 265              dc.b $0D,$0A,0
+00001950                           266              
+00001950= 79 6F 75 20 77 61 ...    267  LeavePharmacy: dc.b 'you walk into the pharmacy and decide you dont need any help and walk back out'
+0000199E= 0D 0A                    268                 dc.b $0D,$0A
+000019A0= 6F 6E 6C 79 20 74 ...    269                 dc.b 'only to find 4 bears out side the pharmacy a bear swipes and you dealing 25 damage'
+000019F2= 0D 0A                    270                 dc.b $0D,$0A
+000019F4= 70 72 65 73 73 20 ...    271                 dc.b 'press one to walk back into the pharmacy'
+00001A1C= 0D 0A                    272                 dc.b $0D,$0A
+00001A1E= 70 72 65 73 73 20 ...    273                 dc.b 'press two to run at the bears and fight them'
+00001A4A= 0D 0A 00                 274                 dc.b $0D,$0A,0
+00001A4D                           275           
+00001A4D= 79 6F 75 20 77 61 ...    276  ApproachCounter: dc.b 'you walk up to the counter and tell the chemist that you drank fox piss'
+00001A94= 0D 0A                    277                   dc.b $0D,$0A
+00001A96= 22 77 68 79 20 77 ...    278                   dc.b '"why would you drink fox piss you idiot" c cause i taught it was wine'
+00001ADB= 0D 0A                    279                   dc.b $0D,$0A
+00001ADD= 61 74 20 74 68 69 ...    280                   dc.b 'at this moment you hear a roar outside and two bears come crashing through the'
+00001B2B= 0D 0A                    281                   dc.b $0D,$0A
+00001B2D= 70 68 61 72 6D 61 ...    282                   dc.b 'pharmacy doors'
+00001B3B= 0D 0A                    283                   dc.b $0D,$0A
+00001B3D= 70 72 65 73 73 20 ...    284                   dc.b 'press one to hop the counter and run out the back door'
+00001B73= 0D 0A                    285                   dc.b $0D,$0A
+00001B75= 70 72 65 73 73 20 ...    286                   dc.b 'press two to turn and attack the bears'
+00001B9B= 0D 0A 00                 287                   dc.b $0D,$0A,0
+00001B9E                           288  
+00001B9E                           289  AttackBears:
+00001B9E                           290                      
+00001B9E                           291   
+00001B9E= 79 6F 75 20 66 61 ...    292  YouDied: dc.b 'you failed try again'
+00001BB2= 0D 0A 00                 293           dc.b $0D,$0A,0
+00001BB5                           294         
+00001BB5                           295  
+00001BB5                           296  
+00001BB5                           297  
+00001BB5                           298                
+00001BB5                           299   
+00001BB5                           300        
+00001BB5                           301  * Put variables and constants here
+00001BB5                           302  
+00001BB5                           303      END    START        ; last line of source
+
+No errors detected
+No warnings generated
+
+
+SYMBOL TABLE INFORMATION
+Symbol-name         Value
+-------------------------
+APPROACHCOUNTER     1A4D
+ATTACKBEARS         1B9E
+ATTACK_BEARS        1144
+CHEESE_CHOOSEN      1160
+DRINKWINE           132C
+DRINK_WINE          1064
+END_GAME            1160
+GOPHARMACY          18C4
+GO_PHARMACY         10E4
+HEADAWAY            173A
+HEAD_AWAY           10C4
+HOP_COUNTER         1144
+INTRODUCTION        1170
+LEAVEPHARMACY       1950
+LEAVETAVERN         1500
+LEAVE_PHARMACY      1104
+LEAVE_TAVERN        10A4
+NO_WINE             1044
+START               1000
+STAYTAVERN          160E
+STAY_IN_TAVERN      1084
+TALK_TO_CHEMIST     1124
+WINECHOOSEN         125E
+WINENOTDRANK        13FA
+WINE_CHOOSEN        1024
+WINE_OR_CHEESE      1004
+YOUDIED             1B9E
